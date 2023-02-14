@@ -7,7 +7,11 @@ function generatePassword() {
     var passwordLength = parseInt(window.prompt("Enter the length of the password (minimum 8 characters, maximum 128 characters):"));
     if (passwordLength < 8 || passwordLength > 128) {
       return "Password length must be between 8 and 128 characters.";
+      
     }
+    if (isNaN(passwordLength)) {
+      return "Must be a number.";
+    } 
     //  b. lowercase, uppercase, number, special chars variables
     var includeLowercase = window.confirm("Include lowercase characters in password?");
     var includeUppercase = window.confirm("Include uppercase characters in password?");
@@ -30,11 +34,16 @@ function generatePassword() {
     if (includeSpecial) passwordChars += specialChars;
     
     //3. generate the password based on criteria
-    var randomPassword = "";
-    for (var i= 0; i < passwordLength; i++) {
-      randomPassword += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length)); 
-    }
      
+    var randomPassword = "";
+    for (var i= 0; i < passwordLength; i++) { 
+      console.log(passwordChars);
+      console.log (passwordChars.charAt(Math.floor(Math.random() * passwordChars.length)))
+      randomPassword += passwordChars.charAt(Math.floor(Math.random() * passwordChars.length));
+      console.log(randomPassword);
+    }
+
+   
     //4. display the password to page
       return randomPassword;
     
